@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4a5568" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Tea Sepolia DApp</title>
+</head>
+<body class="bg-gray-900 text-white font-bold min-h-screen flex flex-col items-center p-4">
+  <h1 class="text-4xl border-4 border-white p-2 bg-gray-800">🔗 Tea Sepolia DApp</h1>
+  <div class="w-full max-w-md mt-6">
+    <!-- Wallet Connection -->
+    <div class="flex border-4 border-white bg-gray-800 p-2 mb-4">
+      <button id="connectWallet" onclick="connectWallet()" class="bg-white text-black px-4 py-2 w-full">Connect Wallet</button>
+    </div>
+    <p id="walletAddress" class="text-center mb-4"></p>
+
+    <!-- Transfer ZNCT -->
+    <div class="border-4 border-white bg-gray-800 p-2 mb-4">
+      <h2 class="text-xl">Transfer ZNCT</h2>
+      <input id="transferAddress" class="w-full p-2 bg-transparent border-2 border-white mb-2" placeholder="Recipient Address" />
+      <input id="transferAmount" class="w-full p-2 bg-transparent border-2 border-white mb-2" placeholder="Amount (ZNCT)" type="number" />
+      <button onclick="transferZNCT()" class="bg-white text-black px-4 py-2 w-full">Transfer</button>
+    </div>
+
+    <!-- Swap ZNCT/TEA -->
+    <div class="border-4 border-white bg-gray-800 p-2 mb-4">
+      <h2 class="text-xl">Swap ZNCT for TEA</h2>
+      <input id="swapAmount" class="w-full p-2 bg-transparent border-2 border-white mb-2" placeholder="Amount (ZNCT)" type="number" />
+      <button onclick="swapZNCTforTEA()" class="bg-white text-black px-4 py-2 w-full">Swap</button>
+    </div>
+
+    <!-- Mint NFT -->
+    <div class="border-4 border-white bg-gray-800 p-2 mb-4">
+      <h2 class="text-xl">Mint NFT</h2>
+      <input id="nftTokenURI" class="w-full p-2 bg-transparent border-2 border-white mb-2" placeholder="Token URI (e.g., ipfs://...)" />
+      <button onclick="mintNFT()" class="bg-white text-black px-4 py-2 w-full">Mint NFT</button>
+    </div>
+
+    <!-- Deploy Contract -->
+    <div class="border-4 border-white bg-gray-800 p-2 mb-4">
+      <h2 class="text-xl">Deploy Contract</h2>
+      <select id="contractType" class="w-full p-2 bg-transparent border-2 border-white mb-2">
+        <option value="erc20">ERC-20 Token</option>
+        <option value="erc721">ERC-721 NFT</option>
+      </select>
+      <button onclick="deployContract()" class="bg-white text-black px-4 py-2 w-full">Deploy</button>
+    </div>
+
+    <!-- Add/Remove Liquidity -->
+    <div class="border-4 border-white bg-gray-800 p-2 mb-4">
+      <h2 class="text-xl">Liquidity Pool (ZNCT/TEA)</h2>
+      <input id="lpZNCTAmount" class="w-full p-2 bg-transparent border-2 border-white mb-2" placeholder="ZNCT Amount" type="number" />
+      <input id="lpTEAAmount" class="w-full p-2 bg-transparent border-2 border-white mb-2" placeholder="TEA Amount" type="number" />
+      <button onclick="addLiquidity()" class="bg-white text-black px-4 py-2 w-full mb-2">Add Liquidity</button>
+      <button onclick="removeLiquidity()" class="bg-white text-black px-4 py-2 w-full">Remove Liquidity</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* style.css */
+@import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+button:hover {
+  background-color: #ff00aa;
+  transition: 0.3s;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+input, select {
+  color: white;
+}
+
+input:focus, select:focus {
+  outline: none;
+}
+
+.border-4 {
+  border-color: white;
+}
+
+.bg-gray-800 {
+  background-color: #2d3748;
+}
+
+.bg-gray-900 {
+  background-color: #1a202c;
+}
